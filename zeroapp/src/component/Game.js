@@ -75,8 +75,8 @@ const Game = () => {
             let ans = false;
             for (var i = 0; i <= 2; i++) {
                 for (var j = 0; j <= 2; j++) {
-                    if (box[1] === box[5] && box[5] === box[9] && box[9] === box[1] ||
-                        box[3] === box[5] && box[5] === box[7] && box[7] === box[3]) {
+                   if (box[0] === box[4] && box[4] === box[8] && box[8] === box[0] ||
+                        box[2] === box[4] && box[4] === box[6] && box[6] === box[2]) {
                         return ans = true;
                     }
                     else {
