@@ -86,13 +86,11 @@ const Game = () => {
             }
         }
         const checkWin = () => {
-            return (checkRow() || checkColumn()||checkDigonal);
+            return (checkRow() || checkColumn()||checkDigonal());
         }
         if (checkWin()) {
             setwinner(turn === 0 ? "Player 2 Wins!" : "Player 1 Wins!");
-        }else{
-             setwinner('Its a Tie!');
-        }       
+        }
     })
 
     return (
