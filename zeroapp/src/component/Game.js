@@ -71,16 +71,28 @@ const Game = () => {
                 }
             }
         }
+         const checkDigonal = () => {
+            let ans = false;
+            for (var i = 0; i <= 2; i++) {
+                for (var j = 0; j <= 2; j++) {
+                    if (box[1] === box[5] && box[5] === box[9] && box[9] === box[1] ||
+                        box[3] === box[5] && box[5] === box[7] && box[7] === box[3]) {
+                        return ans = true;
+                    }
+                    else {
+                        return ans = false;
+                    }
+                }
+            }
+        }
         const checkWin = () => {
-            return (checkRow() || checkColumn());
+            return (checkRow() || checkColumn()||checkDigonal);
         }
         if (checkWin()) {
             setwinner(turn === 0 ? "Player 2 Wins!" : "Player 1 Wins!");
-        }
-
-        if (winner) {
-
-        }
+        }else{
+             setwinner('Its a Tie!');
+        }       
     })
 
     return (
