@@ -12,6 +12,7 @@ const Game = () => {
     const [winner, setwinner] = useState('');
     const [box, setBox] = useState(array);
     const [active, setactive] = useState(true);
+    const [count,setcount] = useState(0);
     console.log('value of active', active);
 
     const audio = new Audio(sound);
@@ -24,17 +25,21 @@ const Game = () => {
         boxdata[curdata] = current;
         setBox(boxdata);
         setturn(turn === 0 ? 1 : 0);
+        console.log(box);
+        setcount(count+1);
+        console.log("its draw",count);        
     }
 
     useEffect(() => {
         setactive(true);
+        console.log(winner)
     }, [handleClick])
     const resetBoard = () => {
         setBox(['0', '1', '2', '3', '4', '5', '6', '7', '8']);
         setturn(0);
         setwinner('');
-
         setactive(false);
+        setcount(0);
     }
     useEffect(() => {
         const checkRow = () => {
@@ -71,11 +76,11 @@ const Game = () => {
                 }
             }
         }
-         const checkDigonal = () => {
+        const checkDigonal = () => {
             let ans = false;
             for (var i = 0; i <= 2; i++) {
                 for (var j = 0; j <= 2; j++) {
-                   if (box[0] === box[4] && box[4] === box[8] && box[8] === box[0] ||
+                    if (box[0] === box[4] && box[4] === box[8] && box[8] === box[0] ||
                         box[2] === box[4] && box[4] === box[6] && box[6] === box[2]) {
                         return ans = true;
                     }
@@ -86,11 +91,16 @@ const Game = () => {
             }
         }
         const checkWin = () => {
-            return (checkRow() || checkColumn()||checkDigonal());
-        }
+            return (checkRow() || checkColumn()||checkDigonal());            
+            }   
+
         if (checkWin()) {
             setwinner(turn === 0 ? "Player 2 Wins!" : "Player 1 Wins!");
+        }       
+        else if(count==9){
+            setwinner('its a draw');
         }
+        
     })
 
     return (
