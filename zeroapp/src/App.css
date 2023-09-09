@@ -45,6 +45,7 @@
 }
 .visible{
   color: black !important;
+  pointer-events: none;
 }
 .box_element .show{
   background-color: red;
